@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Item
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Items App")
+    items = Item.objects.all()
+    context = {'items':items}
+    return render(request,'items/index.html',context)
