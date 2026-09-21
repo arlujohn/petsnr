@@ -8,12 +8,21 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory inside the container
 WORKDIR /app
 
+# Additional Command lines
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    procps \
+    gcc \
+    libpq-dev \
+    curl \
+    telnet \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy requirements file first for better caching
 COPY requirements.txt /app/
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
+RUN pip install gunicorn
 # Copy the rest of the application code
 COPY . /app/
 
@@ -21,4 +30,5 @@ COPY . /app/
 EXPOSE 8000
 
 # Run the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]   
+CMD ["gunicorn", "--bind","0.0.0.0:8000","petsnr.wsgi:application"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]   
