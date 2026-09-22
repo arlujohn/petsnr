@@ -9,11 +9,13 @@
     <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
-    <img src="{% static 'images/sample-logo.jpg' %}" alt="I Wish i was special">
+    <img src="{% static 'images/sample-logo.jpg' %}" alt="Petsnr-unofficial-logo">
     <h1>Petsnr - Items Display</h1>
     <ul>
         {% for item in items %}
-        <li>{{item}}</li>
+        <p><b>Item Name:</b> {{item.item_name}}</br> <b>Description:</b> {{item.item_description}}</br> <b>Category:</b> {{item.item_category}}</br> <b>Available in Stock:</b> {{item.item_stock}}</br> <b>Price:</b> ₱{{item.item_price}}
+
+        </p>
         {% endfor %}
         
     </ul>
