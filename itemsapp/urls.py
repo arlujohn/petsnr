@@ -4,5 +4,6 @@ from . import views
 # Define a list of url patterns
 urlpatterns = [
     path('', views.index),
+    path('addItems', views.addItems),
 ]
 

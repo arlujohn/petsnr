@@ -9,3 +9,5 @@ def index(request):
     context = {'items':items}
     return render(request,'items/index.html',context)
 
+def addItems(request):
+    return render(request,'items/addItems.html')
