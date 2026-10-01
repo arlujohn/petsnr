@@ -20,8 +20,8 @@ def addItems(request):
     if request.method == "POST":
         form = ItemsForm(request.POST)
         if form.is_valid():
-            form.add_items(request)
-            return redirect('adding_items_success')
+            form.add_items()
+            return redirect(adding_items_success)
     else:
         form = ItemsForm()
 
@@ -31,7 +31,7 @@ def addItems(request):
 
 # Define the adding-items-success view
 def adding_items_success(request):
-    return render(request, 'items/addItemsSuccess.html')
+    return render(request,'items/addItemsSuccess.html')
 
 
 

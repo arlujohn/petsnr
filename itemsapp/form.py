@@ -8,5 +8,5 @@ class ItemsForm(forms.Form):
     item_stock = forms.IntegerField()
 
 
-def add_items(self):
-    print(f"Adding the item: {self.cleaned_data['item_name']}")
+    def add_items(self):
+        print(f"Adding the item: {self.cleaned_data['item_name']}")
